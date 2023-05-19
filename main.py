@@ -2,7 +2,7 @@
 # https://github.com/eddgr/clip-leetcode/blob/master/source/main.js#L105
 import requests, json
 
-URL = 'https://leetcode.com/problems/two-sum/'
+URL = 'https://leetcode.com/problems/is-graph-bipartite/'
 
 MARKDOWN = {
     "<div>": "",
@@ -136,7 +136,8 @@ class Question:
         content = question_info['content']
         
         # start write markdown file
-        with open(f'{id}_{self.slug.capitalize()}.md', 'w') as f:
+        file_name = f'{id}_{self.slug.capitalize()}.md'
+        with open(file_name, 'w') as f:
             self.write_heading(f, id, title)
             self.write_tag(f, difficulty)
             self.write_description(f, content)
