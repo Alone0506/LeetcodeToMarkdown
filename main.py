@@ -1,6 +1,6 @@
 import requests, json
 
-URL = 'https://leetcode.com/problems/is-graph-bipartite/'
+URL = 'https://leetcode.com/problems/two-sum/'
 
 MARKDOWN = {
     "<div>": "",
