@@ -52,10 +52,11 @@ class Question:
     def __init__(self, url: str, markdown: dict):
         self.url = url
         self.slug = ''
-        if url.split('/')[-1] in ['description', 'editorial', 'solutions', 'submissions']:
-            self.slug = url.split('/')[-3]
-        else:
-            self.slug = url.split('/')[-2]
+        for paging in ['description', 'editorial', 'solutions', 'submissions']:
+            if paging in url:
+                self.url = url[:url.index(paging)]
+                break
+        self.slug = self.url.split('/')[-2]
         self.md = markdown
         
     def get_question_info(self) -> dict:
@@ -133,7 +134,7 @@ class Question:
         content = question_info['content']
         
         # start write markdown file
-        with open(f'{id}-{title}.md', 'w') as f:
+        with open(f'{id}_{self.slug.capitalize()}.md', 'w') as f:
             self.write_heading(f, id, title)
             self.write_tag(f, difficulty)
             self.write_description(f, content)
