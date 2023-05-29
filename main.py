@@ -1,5 +1,3 @@
-# https://gcyml.github.io/2019/03/03/Python%E7%88%AC%E5%8F%96Leetcode%E9%A2%98%E7%9B%AE%E5%8F%8AAC%E4%BB%A3%E7%A0%81/
-# https://github.com/eddgr/clip-leetcode/blob/master/source/main.js#L105
 import requests, json
 
 URL = 'https://leetcode.com/problems/kth-largest-element-in-a-stream/description/'
@@ -137,9 +135,7 @@ class Question:
         difficulty = question_info['difficulty']
         content = question_info['content']
         
-        # start write markdown file
-        # file_name = f'{id}_{self.slug.capitalize()}.md'
-        file_name = 'question.md'
+        file_name = 'tmp.md'
         with open(file_name, 'w') as f:
             self.write_heading(f, id, title)
             self.write_tag(f, difficulty)
