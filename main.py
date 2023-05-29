@@ -1,6 +1,8 @@
+# https://gcyml.github.io/2019/03/03/Python%E7%88%AC%E5%8F%96Leetcode%E9%A2%98%E7%9B%AE%E5%8F%8AAC%E4%BB%A3%E7%A0%81/
+# https://github.com/eddgr/clip-leetcode/blob/master/source/main.js#L105
 import requests, json
 
-URL = 'https://leetcode.com/problems/two-sum/'
+URL = 'https://leetcode.com/problems/kth-largest-element-in-a-stream/description/'
 
 MARKDOWN = {
     "<div>": "",
@@ -17,13 +19,14 @@ MARKDOWN = {
     "</li>": "",
     "&nbsp;": "",
     "&#39;": "'",
+    "&quot;": "\"",
     "<em>": "",
     "</em>": "",
     "<b>": "<strong>",
     "</b>": "</strong>",
-    "<strong>Input</strong>": "Input\n",
-    "<strong>Output</strong>": "Output\n",
-    "<strong>Explanation</strong>": "Explanation\n",
+    "<strong>Input</strong>": "Input",
+    "<strong>Output</strong>": "Output",
+    "<strong>Explanation</strong>": "Explanation",
     "<strong>Input:</strong>": "Input:",
     "<strong>Output:</strong>": "Output:",
     "<strong>Explanation:</strong>": "Explanation:",
@@ -40,8 +43,8 @@ MARKDOWN = {
     # "</code>": "`",
     "&lt;": "<",
     "&gt;": ">",
-    "<sup>": "^",
-    "</sup>": "",
+    # "<sup>": "^",
+    # "</sup>": "",
     "	": "", # special tab
     "<span.*?>": "",
     "</span>": "",
@@ -103,6 +106,7 @@ class Question:
         file.write('\n\n')
         
     def write_description(self, file, content: str):
+        print(content)
         content = "\n".join(content.splitlines())
         for old, new in self.md.items():
             content = content.replace(old, new)
@@ -134,7 +138,8 @@ class Question:
         content = question_info['content']
         
         # start write markdown file
-        file_name = f'{id}_{self.slug.capitalize()}.md'
+        # file_name = f'{id}_{self.slug.capitalize()}.md'
+        file_name = 'question.md'
         with open(file_name, 'w') as f:
             self.write_heading(f, id, title)
             self.write_tag(f, difficulty)
