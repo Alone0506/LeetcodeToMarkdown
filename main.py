@@ -1,6 +1,6 @@
 import requests, json
 
-URL = 'https://leetcode.com/problems/stone-game-iii/description/'
+URL = 'https://leetcode.com/problems/maximum-strength-of-a-group/'
 
 MARKDOWN = {
     "<div>": "",
@@ -18,19 +18,21 @@ MARKDOWN = {
     "&nbsp;": "",
     "&#39;": "'",
     "&quot;": "\"",
+    "&rsquo;": "'",
+    "&lsquo;": "'",
     "<em>": "",
     "</em>": "",
     "<b>": "<strong>",
     "</b>": "</strong>",
-    "<strong>Input</strong>": "Input",
-    "<strong>Output</strong>": "Output",
-    "<strong>Explanation</strong>": "Explanation",
-    "<strong>Input:</strong>": "Input:",
-    "<strong>Output:</strong>": "Output:",
-    "<strong>Explanation:</strong>": "Explanation:",
-    "<strong>Input: </strong>": "Input: ",
-    "<strong>Output: </strong>": "Output: ",
     "<strong>Explanation: </strong>": "Explanation: ",
+    "<strong>Explanation:</strong>": "Explanation:",
+    "<strong>Explanation</strong>": "Explanation",
+    "<strong>Input: </strong>": "Input: ",
+    "<strong>Input:</strong>": "Input:",
+    "<strong>Input</strong>": "Input",
+    "<strong>Output: </strong>": "Output: ",
+    "<strong>Output:</strong>": "Output:",
+    "<strong>Output</strong>": "Output",
     '<strong class="example">Example': "**Example",
     "<strong>": " **",
     "</strong>": "** ",
@@ -46,6 +48,7 @@ MARKDOWN = {
     "	": "", # special tab
     "<span.*?>": "",
     "</span>": "",
+    "\u200b": "",
     "\n\n\n": "\n\n",
 }
 
@@ -104,8 +107,8 @@ class Question:
         file.write('\n\n')
         
     def write_description(self, file, content: str):
-        print(content)
         content = "\n".join(content.splitlines())
+        print(content)
         for old, new in self.md.items():
             content = content.replace(old, new)
         file.write(content)
@@ -125,7 +128,7 @@ class Question:
         
     def write_note(self, file):
         file.write('## Note\n')
-        file.write('x\n')
+        file.write('[](https://)\n')
         file.write('\n\n')
     
     def question2md(self):
@@ -135,6 +138,7 @@ class Question:
         difficulty = question_info['difficulty']
         content = question_info['content']
         
+        # start write markdown file
         file_name = 'tmp.md'
         with open(file_name, 'w') as f:
             self.write_heading(f, id, title)
