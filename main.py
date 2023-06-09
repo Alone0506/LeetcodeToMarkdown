@@ -128,8 +128,8 @@ class Question:
         
     def write_note(self, file):
         file.write('## Note\n')
+        file.write('x\n')
         file.write('[](https://)\n')
-#         file.write('\n\n')
     
     def question2md(self):
         question_info = self.get_question_info()
