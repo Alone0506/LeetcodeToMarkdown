@@ -1,6 +1,6 @@
 import requests, json
 
-URL = 'https://leetcode.com/problems/maximum-strength-of-a-group/'
+URL = 'https://leetcode.com/problems/two-sum/'
 
 MARKDOWN = {
     "<div>": "",
@@ -97,12 +97,14 @@ class Question:
         return question_info
     
     def write_heading(self, file, id: str, title: str):
-        heading = f'# [{id}. {title}]({self.url})'
+        heading = f'LC {id}. {title}\n'
+        link = f'### [Problem link]({self.url})\n'
         file.write(heading)
+        file.write(link)
         file.write('\n\n')
         
     def write_tag(self, file, difficulty: str):
-        tag = f'###### tags: `leedcode` `{difficulty.lower()}`'
+        tag = f'###### tags: `leedcode` `python` `{difficulty.lower()}`'
         file.write(tag)
         file.write('\n\n')
         
