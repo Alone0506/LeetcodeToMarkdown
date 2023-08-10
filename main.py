@@ -1,6 +1,6 @@
 import requests, json
 
-URL = 'https://leetcode.com/problems/two-sum/'
+URL = 'https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/'
 
 MARKDOWN = {
     "<div>": "",
@@ -97,11 +97,11 @@ class Question:
         return question_info
     
     def write_heading(self, file, id: str, title: str):
-        heading = f'LC {id}. {title}\n'
+        heading = f'# LC {id}. {title}\n\n'
         link = f'### [Problem link]({self.url})\n'
         file.write(heading)
         file.write(link)
-        file.write('\n\n')
+        file.write('\n')
         
     def write_tag(self, file, difficulty: str):
         tag = f'###### tags: `leedcode` `python` `{difficulty.lower()}`'
@@ -110,10 +110,10 @@ class Question:
         
     def write_description(self, file, content: str):
         content = "\n".join(content.splitlines())
-        print(content)
         for old, new in self.md.items():
             content = content.replace(old, new)
         file.write(content)
+        # file.write('\n\n')
         file.write('\n')
         
     def write_solution(self, file):
@@ -126,7 +126,7 @@ class Question:
         file.write('>|             | Time Complexity | Space Complexity |\n')
         file.write('>| ----------- | --------------- | ---------------- |\n')
         file.write('>| Solution 1  | O(n)            | O(1)             |\n')
-        file.write('\n\n')
+        file.write('\n')
         
     def write_note(self, file):
         file.write('## Note\n')
