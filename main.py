@@ -104,7 +104,7 @@ class Question:
         file.write('\n')
         
     def write_tag(self, file, difficulty: str):
-        tag = f'###### tags: `leedcode` `{difficulty.lower()}` `python`'
+        tag = f'###### tags: `leedcode` `{difficulty.lower()}` `python` `c++`'
         file.write(tag)
         file.write('\n\n')
         
